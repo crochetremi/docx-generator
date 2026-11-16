@@ -40,3 +40,8 @@
   border-radius: 50%;
   font-size: 0.7rem;
 }
+
+.preview-card-sticky {
+  position: sticky;
+  top: 16px;
+}

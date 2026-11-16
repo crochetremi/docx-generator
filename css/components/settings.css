@@ -71,7 +71,7 @@ select, input[type="text"] {
   cursor: pointer;
 }
 
-.checkbox-row, .highlight-toggle-row {
+.checkbox-row {
   font-size: 0.75rem;
   display: flex;
   align-items: center;
