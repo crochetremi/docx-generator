@@ -262,10 +262,17 @@ function buildParagraph(type, content, styles, highlightConfig, fontFamily) {
   switch (type) {
     case "theme": {
       const { runProps, shading } = styles.theme;
+      const themeBorder = {
+        top: buildBorder(runProps.color),
+        bottom: buildBorder(runProps.color),
+        left: buildBorder(runProps.color),
+        right: buildBorder(runProps.color)
+      };
       return new Paragraph({
         heading: HeadingLevel.TITLE,
         spacing: { before: 360, after: 200 },
         shading,
+        border: themeBorder,
         children: [new TextRun({ text: finalContent, font: fontFamily, ...runProps })]
       });
     }
@@ -431,7 +438,7 @@ export function initDocxBuilder() {
           documentChildren.push(new Paragraph({ spacing: { before: 80, after: 80 }, children: [] }));
         }
         
-        documentChildren.push(buildGrandTitreParagraph(cls.content, secondLine, grandTitreConfig, fontFamily));
+        documentChildren.push(buildGrandTiteurParagraph ? buildGrandTiteurParagraph(...) : buildGrandTitreParagraph(cls.content, secondLine, grandTitreConfig, fontFamily));
         lastWasBox = true;
         continue;
       }
