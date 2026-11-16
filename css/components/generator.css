@@ -1,55 +1,92 @@
 textarea {
   width: 100%;
-  height: 560px;
+  height: 380px;
   box-sizing: border-box;
-  padding: 12px;
+  padding: 10px;
   font-family: inherit;
-  border: 1px solid var(--color-border);
-  border-radius: var(--radius-md);
+  background: var(--bg-main);
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-sm);
+  color: #fff;
   resize: vertical;
-  font-size: 0.9rem;
-  line-height: 1.5;
+  font-size: 0.85rem;
+  line-height: 1.4;
 }
 
-@media (max-width: 960px) {
-  textarea {
-    height: 360px;
-  }
-}
-
-textarea:focus {
+textarea:focus, select:focus, input:focus {
   outline: none;
   border-color: var(--color-primary);
 }
 
-button.btn-generate, #btn-apply-palette {
+.editor-footer-info {
+  display: flex;
+  justify-content: space-between;
+  font-size: 0.7rem;
+  color: var(--text-muted);
+  margin-top: 6px;
+}
+
+button.btn-generate, #btn-apply-palette, .btn-top-generate {
   border: none;
-  border-radius: var(--radius-md);
+  border-radius: var(--radius-sm);
   cursor: pointer;
   font-weight: bold;
 }
 
 #btn-apply-palette {
-  padding: 6px 12px;
+  padding: 6px 10px;
   background: var(--color-primary);
   color: #fff;
+  font-size: 0.75rem;
+}
+
+button.btn-generate, .btn-top-generate {
+  background: var(--color-primary);
+  color: #ffffff;
+  padding: 10px;
+  font-size: 0.9rem;
+  width: 100%;
+  margin-top: 10px;
+}
+
+.btn-top-generate {
+  width: auto;
+  padding: 6px 12px;
   font-size: 0.8rem;
 }
 
-#btn-apply-palette:hover {
-  background: var(--color-primary-hover);
-}
-
-button.btn-generate {
-  width: 100%;
-  background: var(--color-primary);
-  color: #ffffff;
+/* Aperçu dynamique */
+.doc-preview-mockup {
+  background: #ffffff;
+  color: #111111;
   padding: 14px;
-  font-size: 1rem;
-  margin-top: 14px;
-  transition: background-color 0.2s ease;
+  border-radius: var(--radius-sm);
+  min-height: 180px;
+  margin-bottom: 10px;
+  font-size: 0.8rem;
 }
 
-button.btn-generate:hover {
-  background: var(--color-primary-hover);
+.doc-preview-title {
+  font-weight: bold;
+  text-align: center;
+  font-size: 0.95rem;
+}
+
+.doc-preview-subtitle {
+  text-align: center;
+  font-size: 0.7rem;
+  color: #666;
+  margin-bottom: 8px;
+}
+
+.doc-preview-heading {
+  font-weight: bold;
+  margin-top: 8px;
+  font-size: 0.8rem;
+}
+
+.doc-preview-text {
+  font-size: 0.75rem;
+  color: #333;
+  margin-top: 4px;
 }

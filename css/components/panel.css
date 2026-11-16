@@ -1,31 +1,42 @@
-.panel {
-  background: var(--color-surface);
-  padding: 20px;
+.column {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.card {
+  background-color: var(--bg-card);
+  border: 1px solid var(--border-color);
   border-radius: var(--radius-lg);
-  box-shadow: var(--shadow-sm);
+  padding: 14px;
 }
 
-.panel-styles {
-  max-height: calc(100vh - 48px);
-  overflow-y: auto;
-  position: sticky;
-  top: 24px;
+.card-header {
+  font-size: 0.9rem;
+  font-weight: 600;
+  margin-bottom: 12px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
 }
 
-@media (max-width: 960px) {
-  .panel-styles {
-    position: static;
-    max-height: none;
-  }
+.card-header-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 10px;
+  flex-wrap: wrap;
+  gap: 8px;
 }
 
-.section-title {
-  font-weight: bold;
-  margin: 18px 0 12px 0;
-  border-bottom: 2px solid #edf2f7;
-  padding-bottom: 6px;
-}
-
-.panel-styles > .section-title:first-of-type {
-  margin-top: 4px;
+.badge-num {
+  background: #334155;
+  color: #fff;
+  width: 18px;
+  height: 18px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  font-size: 0.7rem;
 }

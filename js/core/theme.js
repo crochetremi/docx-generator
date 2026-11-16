@@ -16,5 +16,6 @@ export function initTheme() {
   if (select && btn) {
     applyPalette(select.value);
     btn.addEventListener("click", () => applyPalette(select.value));
+    select.addEventListener("change", () => applyPalette(select.value));
   }
 }

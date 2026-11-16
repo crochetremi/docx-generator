@@ -10,61 +10,62 @@
   <link rel="stylesheet" href="css/components/generator.css">
   <script src="https://cdn.jsdelivr.net/npm/docx@8.5.0/build/index.iife.js"></script>
 </head>
-<body class="app-dark-mode">
+<body>
 
-  <!-- Barre de navigation supérieure -->
   <header class="app-header">
     <div class="header-title">Générateur de cours</div>
     <div class="header-steps">
       <span class="step-badge active">1 — Contenu et style</span>
       <span class="step-badge">2 — Aperçu</span>
     </div>
-    <button class="btn-top-generate" disabled>Générer le cours (.docx)</button>
+    <button class="btn-top-generate" id="btn-generate-top">Générer le cours (.docx)</button>
   </header>
 
   <div class="main-layout">
     
-    <!-- COLONNE 1 : Paramètres généraux (Apparence, En-tête, Légende) -->
+    <!-- Colonne Gauche -->
     <div class="column column-left">
       
       <!-- 1. Apparence -->
       <div class="card">
         <div class="card-header"><span class="badge-num">1</span> Apparence</div>
         <div class="field-row">
-          <label>Palette</label>
-          <div class="palette-options" id="palette-select">
-            <span class="color-dot active" data-value="bleu" style="background:#1f4e79;"></span>
-            <span class="color-dot" data-value="vert" style="background:#1f3d2b;"></span>
-            <span class="color-dot" data-value="bordeaux" style="background:#5e1a24;"></span>
-            <span class="color-dot" data-value="violet" style="background:#4b0082;"></span>
-            <span class="color-dot" data-value="automnale" style="background:#5D4037;"></span>
+          <label>Palette de couleurs</label>
+          <div class="palette-row">
+            <select id="palette-select">
+              <option value="bleu">Bleu</option>
+              <option value="vert" selected>Vert</option>
+              <option value="bordeaux">Bordeaux</option>
+              <option value="violet">Violet</option>
+              <option value="automnale">Automnale</option>
+            </select>
+            <button type="button" id="btn-apply-palette">Appliquer</button>
           </div>
         </div>
-        <div class="field-row">
-          <label>Police</label>
-          <div class="pill-group" id="font-family">
-            <button type="button" class="pill active" data-value="Garamond">Garamond</button>
-            <button type="button" class="pill" data-value="Calibri">Calibri</button>
-            <button type="button" class="pill" data-value="Georgia">Georgia</button>
-            <button type="button" class="pill" data-value="Times New Roman">Times</button>
-          </div>
+        <div class="field-row" style="margin-top: 10px;">
+          <label for="font-family">Police d'écriture</label>
+          <select id="font-family">
+            <option value="Garamond">Garamond</option>
+            <option value="Times New Roman">Times New Roman</option>
+            <option value="Arial">Arial</option>
+          </select>
         </div>
       </div>
 
       <!-- 2. En-tête -->
       <div class="card">
-        <div class="card-header"><span class="badge-num">2</span> En-tête</div>
+        <div class="card-header"><span class="badge-num">2</span> En-tête du document</div>
         <div class="field-row">
           <label for="doc-title">Titre principal</label>
-          <input type="text" id="doc-title" placeholder="Ex: DROIT DU TRAVAIL">
+          <input type="text" id="doc-title" placeholder="Ex : DROIT DU TRAVAIL">
         </div>
         <div class="field-row">
           <label for="doc-subtitle">Sous-titre</label>
-          <input type="text" id="doc-subtitle" placeholder="Ex: Notes de cours — Licence 3">
+          <input type="text" id="doc-subtitle" placeholder="Ex : Notes de cours — Licence 3">
         </div>
         <div class="field-row">
-          <label for="doc-modalities">Modalités (à prévoir, examen...)</label>
-          <textarea id="doc-modalities" rows="2" placeholder="Ex: Se procurer le Code du travail..."></textarea>
+          <label for="doc-modalities">Modalité (à prévoir, examen...)</label>
+          <textarea id="doc-modalities" rows="2" placeholder="Ex : Se procurer le Code du travail..."></textarea>
         </div>
       </div>
 
@@ -74,51 +75,29 @@
         <div class="checkbox-row">
           <label><input type="checkbox" id="legende-enabled" checked> Insérer en début de document</label>
         </div>
-        <div class="legend-item-row">
-          <span class="legend-color-indicator" style="background:#2f6b3a;"></span>
-          <span class="legend-label">Notions et définitions</span>
-          <div class="mini-toggles">
-            <button class="mini-btn active">G</button>
-            <button class="mini-btn">I</button>
-          </div>
-        </div>
-        <div class="legend-item-row">
-          <span class="legend-color-indicator" style="background:#b5651d;"></span>
-          <span class="legend-label">Exceptions et nuances</span>
-          <div class="mini-toggles">
-            <button class="mini-btn active">G</button>
-            <button class="mini-btn active">I</button>
-          </div>
-        </div>
-        <div class="field-row border-config">
-          <label>Fond et bordures</label>
-          <div class="color-pickers-inline">
-            <input type="color" id="legende-bg-color" value="#e3e9e2">
-            <input type="color" id="legende-border-color" value="#3f5b48">
-          </div>
+        <div class="controls-row bg-row" style="margin-top: 8px;">
+          <label><input type="checkbox" id="legende-bg-enabled" checked> Fond</label>
+          <input type="color" id="legende-bg-color" value="#e3e9e2">
+          <label><input type="checkbox" id="legende-border-enabled" checked> Bordure</label>
+          <input type="color" id="legende-border-color" value="#3f5b48">
         </div>
       </div>
 
     </div>
 
-    <!-- COLONNE 2 : Contenu du cours & Styles de niveaux -->
+    <!-- Colonne Milieu -->
     <div class="column column-middle">
       
-      <!-- 4. Contenu du cours -->
+      <!-- 4. Contenu -->
       <div class="card">
-        <div class="card-header-actions">
+        <div class="card-header-row">
           <div class="card-header"><span class="badge-num">4</span> Contenu du cours</div>
-          <div class="toolbar-pills">
-            <span class="toolbar-tag">Mise en valeur auto</span>
-            <button class="tag-pill active">Articles</button>
-            <button class="tag-pill active">Jurisprudence</button>
-            <button class="tag-pill">Dates</button>
-            <button class="tag-pill">Titres encadrés</button>
+          <div class="highlight-toggle-row">
+            <label><input type="checkbox" id="highlight-enabled" checked> Détection auto (Articles / Jurisprudence)</label>
           </div>
         </div>
         <div class="field-row">
-          <label>Colle ton cours ici</label>
-          <textarea id="raw-text" rows="12" placeholder="  
+            <textarea id="raw-text" rows="12" placeholder="  
                                                         INTRODUCTION
                                                         LES FONDAMENTAUX DU DROIT DU TRAVAIL
                                                         Un paragraphe d'introduction générale.
@@ -140,82 +119,88 @@
 
                                                         Chapitre 2 : Cas pratiques
                                                         1. Exercice
-        "></textarea>
+            "></textarea>
         </div>
         <div class="editor-footer-info">
-          <span>Les niveaux sont détectés automatiquement à partir de ta numérotation.</span>
+          <span>Les niveaux sont détectés automatiquement à partir de la numérotation.</span>
           <span id="word-count">0 mot</span>
         </div>
       </div>
 
-      <!-- 5. Style de chaque niveau (Grille interne 2x3) -->
+      <!-- 5. Style de chaque niveau -->
       <div class="card">
         <div class="card-header"><span class="badge-num">5</span> Style de chaque niveau</div>
         <div class="styles-subgrid">
           
-          <!-- Thème -->
           <div class="sub-card">
-            <span class="sub-card-title">THÈME</span>
-            <div class="preview-title-mock">THÈME</div>
-            <div class="format-toggles">
-              <button class="fmt-btn active">G</button>
-              <button class="fmt-btn">I</button>
-              <button class="fmt-btn">A</button>
+            <span class="sub-card-title">Thème</span>
+            <div class="controls-row">
+              <input type="color" id="theme-color" value="#1f4e79">
+              <input type="number" id="theme-size" value="20" min="8" max="72">
+            </div>
+            <div class="checkbox-row">
+              <label><input type="checkbox" id="theme-bold" checked> Gras</label>
+              <label><input type="checkbox" id="theme-italic"> Italique</label>
             </div>
           </div>
 
-          <!-- Chapitre -->
           <div class="sub-card">
-            <span class="sub-card-title">CHAPITRE</span>
-            <div class="preview-title-mock">Chapitre 1</div>
-            <div class="format-toggles">
-              <button class="fmt-btn active">G</button>
-              <button class="fmt-btn">I</button>
-              <button class="fmt-btn">A</button>
+            <span class="sub-card-title">Chapitre</span>
+            <div class="controls-row">
+              <input type="color" id="chapitre-color" value="#2e75b6">
+              <input type="number" id="chapitre-size" value="16" min="8" max="72">
+            </div>
+            <div class="checkbox-row">
+              <label><input type="checkbox" id="chapitre-bold" checked> Gras</label>
+              <label><input type="checkbox" id="chapitre-italic"> Italique</label>
             </div>
           </div>
 
-          <!-- Sections -->
           <div class="sub-card">
-            <span class="sub-card-title">SECTIONS</span>
-            <div class="preview-title-mock">I. Section</div>
-            <div class="format-toggles">
-              <button class="fmt-btn active">G</button>
-              <button class="fmt-btn">I</button>
-              <button class="fmt-btn">A</button>
+            <span class="sub-card-title">Sections</span>
+            <div class="controls-row">
+              <input type="color" id="section-color" value="#2e75b6">
+              <input type="number" id="section-size" value="13" min="8" max="72">
+            </div>
+            <div class="checkbox-row">
+              <label><input type="checkbox" id="section-bold" checked> Gras</label>
+              <label><input type="checkbox" id="section-italic"> Italique</label>
             </div>
           </div>
 
-          <!-- Sous-sections -->
           <div class="sub-card">
-            <span class="sub-card-title">SOUS-SECTIONS</span>
-            <div class="preview-title-mock">A. Sous-section</div>
-            <div class="format-toggles">
-              <button class="fmt-btn active">G</button>
-              <button class="fmt-btn">I</button>
-              <button class="fmt-btn">A</button>
+            <span class="sub-card-title">Sous-sections</span>
+            <div class="controls-row">
+              <input type="color" id="sousSection-color" value="#5b9bd5">
+              <input type="number" id="sousSection-size" value="12" min="8" max="72">
+            </div>
+            <div class="checkbox-row">
+              <label><input type="checkbox" id="sousSection-bold" checked> Gras</label>
+              <label><input type="checkbox" id="sousSection-italic"> Italique</label>
             </div>
           </div>
 
-          <!-- Points de détail -->
           <div class="sub-card">
-            <span class="sub-card-title">POINTS DE DÉTAIL</span>
-            <div class="preview-title-mock">1. Point de détail</div>
-            <div class="format-toggles">
-              <button class="fmt-btn active">G</button>
-              <button class="fmt-btn active">I</button>
-              <button class="fmt-btn">A</button>
+            <span class="sub-card-title">Points de détail</span>
+            <div class="controls-row">
+              <input type="color" id="detail-color" value="#404040">
+              <input type="number" id="detail-size" value="11" min="8" max="72">
+            </div>
+            <div class="checkbox-row">
+              <label><input type="checkbox" id="detail-bold" checked> Gras</label>
+              <label><input type="checkbox" id="detail-italic" checked> Italique</label>
             </div>
           </div>
 
-          <!-- Citations -->
           <div class="sub-card">
-            <span class="sub-card-title">CITATIONS</span>
-            <div class="preview-title-mock">« Citation »</div>
-            <div class="format-toggles">
-              <button class="fmt-btn">G</button>
-              <button class="fmt-btn active">I</button>
-              <button class="fmt-btn">A</button>
+            <span class="sub-card-title">Citations / Lois</span>
+            <div class="controls-row">
+              <input type="color" id="citation-color" value="#555555">
+              <input type="number" id="citation-size" value="10.5" min="8" max="72">
+            </div>
+            <div class="checkbox-row">
+              <label><input type="checkbox" id="citation-bold"> Gras</label>
+              <label><input type="checkbox" id="citation-italic" checked> Italique</label>
             </div>
           </div>
 
@@ -224,24 +209,17 @@
 
     </div>
 
-    <!-- COLONNE 3 : Aperçu en direct -->
+    <!-- Colonne Droite : Aperçu -->
     <div class="column column-right">
       <div class="card preview-card-sticky">
         <div class="card-header">Aperçu en direct</div>
-        <div class="doc-preview-mockup">
-          <div class="doc-preview-title">DROIT DU TRAVAIL</div>
-          <div class="doc-preview-subtitle">Notes de cours — Licence 3</div>
-          <div class="doc-preview-box">
-            <span style="font-size:0.7rem; color:#b5651d;">Notion — Exception</span>
-          </div>
-          <div class="doc-preview-heading">I. Section</div>
-          <div class="doc-preview-line"></div>
-          <div class="doc-preview-subheading">A. Sous-section</div>
-          <div class="doc-preview-line short"></div>
-          <div class="doc-preview-subheading">B. Sous-section</div>
-          <div class="doc-preview-line short"></div>
+        <div class="doc-preview-mockup" id="live-preview">
+          <div class="doc-preview-title" id="prev-title">DROIT DU TRAVAIL</div>
+          <div class="doc-preview-subtitle" id="prev-subtitle">Notes de cours — Licence 3</div>
+          <div class="doc-preview-heading" id="prev-section">I. SECTION</div>
+          <div class="doc-preview-text">Texte du cours de démonstration...</div>
         </div>
-        <button class="btn-generate-main" id="btn-generate">Générer le cours (.docx)</button>
+        <button class="btn-generate" id="btn-generate">Générer et télécharger (.docx)</button>
       </div>
     </div>
 
