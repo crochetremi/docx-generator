@@ -1,35 +1,227 @@
-@import url('tokens.css');
+:root {
+  --bg-main: #18181b;
+  --bg-card: #242428;
+  --border-color: #3f3f46;
+  --text-main: #f4f4f5;
+  --text-muted: #a1a1aa;
+  --primary: #3b82f6;
+}
 
 body {
-  font-family: var(--font-sans);
-  background-color: var(--color-bg);
-  color: var(--color-text);
+  background-color: var(--bg-main);
+  color: var(--text-main);
+  font-family: system-ui, -apple-system, sans-serif;
   margin: 0;
-  padding: 24px;
+  padding: 0;
 }
 
-h1 {
-  margin-bottom: 4px;
-  font-size: 1.6rem;
+/* En-tête supérieur */
+.app-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 12px 24px;
+  background-color: var(--bg-card);
+  border-bottom: 1px solid var(--border-color);
 }
 
-.subtitle {
-  margin: 0 0 20px 0;
-  color: var(--color-text-muted);
-  font-size: 0.9rem;
+.header-steps {
+  display: flex;
+  gap: 12px;
+  background: var(--bg-main);
+  padding: 4px;
+  border-radius: 8px;
 }
 
-.container {
+.step-badge {
+  padding: 6px 14px;
+  font-size: 0.85rem;
+  color: var(--text-muted);
+  border-radius: 6px;
+}
+
+.step-badge.active {
+  background: var(--bg-card);
+  color: var(--text-main);
+  font-weight: 500;
+}
+
+/* Structure en 3 colonnes */
+.main-layout {
   display: grid;
-  grid-template-columns: minmax(340px, 480px) 1fr;
-  gap: 24px;
-  max-width: 1400px;
+  grid-template-columns: 320px 1fr 340px;
+  gap: 20px;
+  padding: 20px;
+  max-width: 1600px;
   margin: 0 auto;
-  align-items: start;
 }
 
-@media (max-width: 960px) {
-  .container {
-    grid-template-columns: 1fr;
-  }
+.column {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+/* Design des Cartes */
+.card {
+  background-color: var(--bg-card);
+  border: 1px solid var(--border-color);
+  border-radius: 12px;
+  padding: 16px;
+}
+
+.card-header {
+  font-size: 0.95rem;
+  font-weight: 600;
+  margin-bottom: 14px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.badge-num {
+  background: #334155;
+  color: #fff;
+  width: 20px;
+  height: 20px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  font-size: 0.75rem;
+}
+
+/* Champs et inputs */
+.field-row {
+  margin-bottom: 12px;
+}
+
+.field-row label {
+  display: block;
+  font-size: 0.75rem;
+  color: var(--text-muted);
+  margin-bottom: 4px;
+}
+
+input[type="text"], textarea {
+  width: 100%;
+  background: var(--bg-main);
+  border: 1px solid var(--border-color);
+  border-radius: 6px;
+  padding: 8px;
+  color: #fff;
+  font-size: 0.85rem;
+  box-sizing: border-box;
+}
+
+/* Grille interne pour les styles de niveaux (2 colonnes) */
+.styles-subgrid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 10px;
+}
+
+.sub-card {
+  background: var(--bg-main);
+  border: 1px solid var(--border-color);
+  border-radius: 8px;
+  padding: 10px;
+}
+
+.sub-card-title {
+  font-size: 0.65rem;
+  color: var(--text-muted);
+  text-transform: uppercase;
+}
+
+.preview-title-mock {
+  font-size: 0.85rem;
+  font-weight: bold;
+  margin: 6px 0;
+}
+
+.format-toggles {
+  display: flex;
+  gap: 4px;
+}
+
+.fmt-btn, .mini-btn {
+  background: #334155;
+  border: none;
+  color: #cbd5e1;
+  padding: 2px 8px;
+  border-radius: 4px;
+  font-size: 0.7rem;
+  cursor: pointer;
+}
+
+.fmt-btn.active, .mini-btn.active {
+  background: #475569;
+  color: #fff;
+  font-weight: bold;
+}
+
+/* Aperçu document miniature */
+.doc-preview-mockup {
+  background: #fff;
+  color: #000;
+  padding: 16px;
+  border-radius: 6px;
+  min-height: 220px;
+  margin-bottom: 12px;
+}
+
+.doc-preview-title {
+  font-size: 0.9rem;
+  font-weight: bold;
+  text-align: center;
+}
+
+.doc-preview-subtitle {
+  font-size: 0.65rem;
+  color: #666;
+  text-align: center;
+  margin-bottom: 12px;
+}
+
+.doc-preview-box {
+  background: #f1f5f9;
+  border: 1px solid #cbd5e1;
+  padding: 6px;
+  border-radius: 4px;
+  margin-bottom: 8px;
+}
+
+.doc-preview-heading {
+  font-size: 0.75rem;
+  font-weight: bold;
+  margin-top: 8px;
+}
+
+.doc-preview-line {
+  height: 4px;
+  background: #e2e8f0;
+  border-radius: 2px;
+  margin-top: 4px;
+}
+
+.doc-preview-line.short {
+  width: 60%;
+}
+
+.btn-generate-main, .btn-top-generate {
+  background: #3b82f6;
+  color: #fff;
+  border: none;
+  width: 100%;
+  padding: 10px;
+  border-radius: 6px;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.btn-top-generate {
+  width: auto;
+  padding: 6px 14px;
+  font-size: 0.85krem;
 }
