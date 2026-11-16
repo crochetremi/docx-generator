@@ -8,6 +8,7 @@
   <link rel="stylesheet" href="css/components/panel.css">
   <link rel="stylesheet" href="css/components/settings.css">
   <link rel="stylesheet" href="css/components/generator.css">
+  <!-- Librairie docx pré-compilée pour le navigateur -->
   <script src="https://cdn.jsdelivr.net/npm/docx@8.5.0/build/index.iife.js"></script>
 </head>
 <body>
@@ -19,7 +20,7 @@
     <!-- Colonne gauche : Panneau de styles -->
     <div class="panel panel-styles">
 
-      <!-- Réglages globaux -->
+      <!-- Réglages globaux : toujours visibles, jamais repliés -->
       <div class="global-settings">
         <div class="field-row">
           <label for="palette-select">Palette de couleurs</label>
@@ -72,6 +73,7 @@
           <label><input type="checkbox" id="legende-border-enabled" checked> Bordures</label>
           <input type="color" id="legende-border-color" value="#3f5b48">
         </div>
+        <p class="mini-note">Les catégories « Articles/lois » et « Jurisprudence » reprennent automatiquement les couleurs définies dans « Mise en valeur automatique » ci-dessous.</p>
         <div class="controls-row">
           <label for="notions-color">Notions et définitions :</label>
           <input type="color" id="notions-color" value="#2f6b3a">
@@ -86,27 +88,29 @@
         </div>
       </details>
 
+      <!-- Mise en valeur automatique dans le texte -->
       <details class="style-group full-width" id="group-highlight">
         <summary>Mise en valeur automatique <span class="hint">"Article L. ...", "Cass. soc. ..."</span></summary>
         <div class="checkbox-row">
-          <label><input type="checkbox" id="highlight-enabled" checked> Activer la détection automatique</label>
+          <label><input type="checkbox" id="highlight-enabled" checked> Activer la détection automatique dans le texte</label>
         </div>
         <div class="controls-row">
-          <label for="articlesLois-color">Articles, lois :</label>
+          <label for="articlesLois-color">Articles, lois, textes normatifs :</label>
           <input type="color" id="articlesLois-color" value="#b5651d">
           <label><input type="checkbox" id="articlesLois-bold" checked> Gras</label>
           <label><input type="checkbox" id="articlesLois-italic"> Italique</label>
         </div>
         <div class="controls-row">
-          <label for="jurisprudence-color">Jurisprudence :</label>
+          <label for="jurisprudence-color">Jurisprudence, arrêts, décisions :</label>
           <input type="color" id="jurisprudence-color" value="#2f6b3a">
           <label><input type="checkbox" id="jurisprudence-bold" checked> Gras</label>
           <label><input type="checkbox" id="jurisprudence-italic" checked> Italique</label>
         </div>
       </details>
 
+      <!-- Titres encadrés : Introduction / Parties -->
       <details class="style-group full-width" id="group-grandTitre">
-        <summary>Titres encadrés <span class="hint">"INTRODUCTION", "PARTIE 1"</span></summary>
+        <summary>Titres encadrés <span class="hint">"INTRODUCTION", "PARTIE 1 — ..."</span></summary>
         <div class="controls-row">
           <label for="grandTitre-color">Couleur :</label>
           <input type="color" id="grandTitre-color" value="#2f5233">
@@ -118,7 +122,7 @@
           <label><input type="checkbox" id="grandTitre-italic"> Italique</label>
         </div>
         <div class="controls-row bg-row">
-          <label><input type="checkbox" id="grandTitre-border-enabled" checked> Bordures</label>
+          <label><input type="checkbox" id="grandTitre-border-enabled" checked> Bordures haut/bas</label>
           <input type="color" id="grandTitre-border-color" value="#3f5b48">
           <label><input type="checkbox" id="grandTitre-bg-enabled"> Fond</label>
           <input type="color" id="grandTitre-bg-color" value="#eef2ec">
@@ -127,12 +131,14 @@
 
       <div class="section-title">Niveaux du texte</div>
       <div class="styles-grid">
+
+        <!-- Thème -->
         <details class="style-group" id="group-theme">
-          <summary>Thème</summary>
+          <summary>Thème <span class="hint">ex. "Thème 1 : ..."</span></summary>
           <div class="controls-row">
             <label for="theme-color">Couleur :</label>
             <input type="color" id="theme-color" value="#1f4e79">
-            <label for="theme-size">Taille :</label>
+            <label for="theme-size">Taille (pt) :</label>
             <input type="number" id="theme-size" value="20" min="8" max="72">
           </div>
           <div class="checkbox-row">
@@ -146,12 +152,13 @@
           </div>
         </details>
 
+        <!-- Chapitre -->
         <details class="style-group" id="group-chapitre">
-          <summary>Chapitre</summary>
+          <summary>Chapitre <span class="hint">ex. "Chapitre 1 - ..."</span></summary>
           <div class="controls-row">
             <label for="chapitre-color">Couleur :</label>
             <input type="color" id="chapitre-color" value="#2e75b6">
-            <label for="chapitre-size">Taille :</label>
+            <label for="chapitre-size">Taille (pt) :</label>
             <input type="number" id="chapitre-size" value="16" min="8" max="72">
           </div>
           <div class="checkbox-row">
@@ -165,12 +172,13 @@
           </div>
         </details>
 
+        <!-- Sections I., II., III. -->
         <details class="style-group" id="group-section">
-          <summary>Sections</summary>
+          <summary>Sections <span class="hint">ex. "I. TITRE"</span></summary>
           <div class="controls-row">
             <label for="section-color">Couleur :</label>
             <input type="color" id="section-color" value="#2e75b6">
-            <label for="section-size">Taille :</label>
+            <label for="section-size">Taille (pt) :</label>
             <input type="number" id="section-size" value="13" min="8" max="72">
           </div>
           <div class="checkbox-row">
@@ -184,12 +192,13 @@
           </div>
         </details>
 
+        <!-- Sous-sections A., B., C. -->
         <details class="style-group" id="group-sousSection">
-          <summary>Sous-sections</summary>
+          <summary>Sous-sections <span class="hint">ex. "A. Titre"</span></summary>
           <div class="controls-row">
             <label for="sousSection-color">Couleur :</label>
             <input type="color" id="sousSection-color" value="#5b9bd5">
-            <label for="sousSection-size">Taille :</label>
+            <label for="sousSection-size">Taille (pt) :</label>
             <input type="number" id="sousSection-size" value="12" min="8" max="72">
           </div>
           <div class="checkbox-row">
@@ -203,12 +212,13 @@
           </div>
         </details>
 
+        <!-- Sous-sous-sections 1.1., 2.1. -->
         <details class="style-group" id="group-sousSousSection">
-          <summary>Sous-sous-sections</summary>
+          <summary>Sous-sous-sections <span class="hint">ex. "1.1. Titre"</span></summary>
           <div class="controls-row">
             <label for="sousSousSection-color">Couleur :</label>
             <input type="color" id="sousSousSection-color" value="#7fb2e5">
-            <label for="sousSousSection-size">Taille :</label>
+            <label for="sousSousSection-size">Taille (pt) :</label>
             <input type="number" id="sousSousSection-size" value="11.5" min="8" max="72">
           </div>
           <div class="checkbox-row">
@@ -218,12 +228,13 @@
           </div>
         </details>
 
+        <!-- Points de détail a., b., c. -->
         <details class="style-group" id="group-detail">
-          <summary>Points de détail</summary>
+          <summary>Points de détail <span class="hint">ex. "a. Titre"</span></summary>
           <div class="controls-row">
             <label for="detail-color">Couleur :</label>
             <input type="color" id="detail-color" value="#404040">
-            <label for="detail-size">Taille :</label>
+            <label for="detail-size">Taille (pt) :</label>
             <input type="number" id="detail-size" value="11" min="8" max="72">
           </div>
           <div class="checkbox-row">
@@ -233,12 +244,13 @@
           </div>
         </details>
 
+        <!-- Citations et textes de loi -->
         <details class="style-group" id="group-citation">
-          <summary>Citations</summary>
+          <summary>Citations / textes de loi</summary>
           <div class="controls-row">
             <label for="citation-color">Couleur :</label>
             <input type="color" id="citation-color" value="#555555">
-            <label for="citation-size">Taille :</label>
+            <label for="citation-size">Taille (pt) :</label>
             <input type="number" id="citation-size" value="10.5" min="8" max="72">
           </div>
           <div class="checkbox-row">
@@ -252,22 +264,24 @@
           </div>
         </details>
 
+        <!-- Texte Normal -->
         <details class="style-group" id="group-text">
           <summary>Texte classique</summary>
           <div class="controls-row">
             <label for="text-color">Couleur :</label>
             <input type="color" id="text-color" value="#262626">
-            <label for="text-size">Taille :</label>
+            <label for="text-size">Taille (pt) :</label>
             <input type="number" id="text-size" value="11" min="8" max="72">
           </div>
         </details>
 
+        <!-- Puces classiques -->
         <details class="style-group" id="group-bullet">
           <summary>Listes à puces</summary>
           <div class="controls-row">
             <label for="bullet-color">Couleur :</label>
             <input type="color" id="bullet-color" value="#262626">
-            <label for="bullet-size">Taille :</label>
+            <label for="bullet-size">Taille (pt) :</label>
             <input type="number" id="bullet-size" value="11" min="8" max="72">
           </div>
           <div class="checkbox-row">
@@ -276,12 +290,13 @@
           </div>
         </details>
 
+        <!-- Flèches personnalisées (sous-puces / exemples) -->
         <details class="style-group" id="group-arrow">
-          <summary>Flèches</summary>
+          <summary>Flèches <span class="hint">ex. "→ Exemple"</span></summary>
           <div class="controls-row">
             <label for="arrow-color">Couleur :</label>
             <input type="color" id="arrow-color" value="#555555">
-            <label for="arrow-size">Taille :</label>
+            <label for="arrow-size">Taille (pt) :</label>
             <input type="number" id="arrow-size" value="10.5" min="8" max="72">
           </div>
           <div class="checkbox-row">
@@ -290,35 +305,32 @@
           </div>
         </details>
       </div>
-
     </div>
 
     <!-- Colonne droite : Saisie de texte -->
     <div class="panel">
       <div class="section-title">Contenu du cours</div>
-        <textarea id="raw-text" rows="12" placeholder="  
-                                                        INTRODUCTION
-                                                        LES FONDAMENTAUX DU DROIT DU TRAVAIL
-                                                        Un paragraphe d'introduction générale.
+      <textarea id="raw-text" placeholder="Colle ton cours ici...
 
-                                                        PARTIE 1 — LES SOURCES DU DROIT DU TRAVAIL
+INTRODUCTION
+LES FONDAMENTAUX DU DROIT DU TRAVAIL
+Un paragraphe d'introduction générale.
 
-                                                        Thème 1 : Introduction générale
-                                                        Chapitre 1 : Les fondamentaux
-                                                        I. HISTORIQUE ET SOURCES
-                                                        Le texte de la section commence ici avec toutes les explications.
-                                                        A. Les sources nationales
-                                                        Un paragraphe qui détaille la sous-section.
-                                                        1.1. Un point précis
-                                                        a. Un détail encore plus fin
-                                                        « Une citation ou un extrait d'article de loi entre guillemets. »
-                                                        - Une première puce
-                                                        → Une puce en flèche
-                                                        Selon l'article L. 1221-1 du Code du travail et l'arrêt Cass. soc. 19 décembre 2000, ...
+PARTIE 1 — LES SOURCES DU DROIT DU TRAVAIL
 
-                                                        Chapitre 2 : Cas pratiques
-                                                        1. Exercice
-        "></textarea>
+Thème 1 : Introduction générale
+Chapitre 1 : Les fondamentaux
+I. HISTORIQUE ET SOURCES
+Le texte de la section commence ici avec toutes les explications.
+A. Les sources nationales
+Un paragraphe qui détaille la sous-section.
+1.1. Un point précis
+a. Un détail encore plus fin
+« Une citation ou un extrait d'article de loi entre guillemets. »
+- Une première puce
+→ Une puce en flèche (exemple)
+Selon l'article L. 1221-1 du Code du travail et l'arrêt Cass. soc. 19 décembre 2000, ..."></textarea>
+
       <button class="btn-generate" id="btn-generate">Générer et télécharger le cours (.docx)</button>
     </div>
   </div>
