@@ -1,5 +1,5 @@
 const RE_PAGE_FOOTER = /^page\s+\d+\s+sur\s+\d+/i;
-const RE_INTRODUCTION = /^introduction\./i;
+const RE_INTRODUCTION = /^introduction\s+\d+/i;
 const RE_PARTIE = /^partie\s+\d+/i;
 const RE_THEME = /^(?:th[eèé]me|titre)\s+\d+/i;
 const RE_CHAPITRE = /^chapitre\s+\d+/i;
