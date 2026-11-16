@@ -6,6 +6,10 @@ const {
 
 import { classifyLine, isMostlyUppercase } from "./text-parser.js";
 
+/* ============================================================
+   1. LECTURE DES RÉGLAGES DE STYLE DANS LE PANNEAU DE GAUCHE
+   ============================================================ */
+
 function getStyleConfig(prefix) {
   const colorInput = document.getElementById(`${prefix}-color`);
   const sizeInput = document.getElementById(`${prefix}-size`);
@@ -108,8 +112,12 @@ function getFontFamily() {
   return select ? select.value : "Calibri";
 }
 
+/* ============================================================
+   2. DÉTECTION DES RÉFÉRENCES LÉGALES DANS UNE LIGNE DE TEXTE
+   ============================================================ */
+
 const ARTICLES_REGEX_SRC =
-  "articles?\\s+[A-Z]\\.?\\s?\\d[\\d\\-.]*(?:,\\s*alinéa\\s*\\d+)?(?:\\s+et\\s+suivants)?(?:\\s+du\\s+Code\\s+du\\s+travail)?";
+  "articles?\\s+[A-Z]\\.?\\s?\\d[\\d\\-.]*(?:,\\s*alinéa\\s*\\d+)?(?:\\s+et\\s+suivants)?(?:\\s+du\\s+Code\\s+(?:civil|du\\s+travail|de\\s+commerce|pénal))?";
 const JURIS_REGEX_SRC =
   "Cass\\.\\s*(?:soc|com|civ|crim)\\.?,?\\s*\\d{1,2}\\s+[a-zA-Zéûôàè]+\\s+\\d{4}(?:,?\\s*n°\\s*[\\d\\-.,\\s]+\\d)?" +
   "|CJUE,?\\s*\\d{1,2}\\s+[a-zA-Zéûôàè]+\\s+\\d{4}(?:,\\s*(?:aff\\.\\s*)?C-[\\d/]+)?" +
@@ -143,6 +151,10 @@ function buildTextRuns(rawText, baseRunProps, highlightConfig, fontFamily) {
   }
   return runs;
 }
+
+/* ============================================================
+   3. CONSTRUCTION DES ÉLÉMENTS DU DOCUMENT DOCX
+   ============================================================ */
 
 function buildBorder(color, size = 6, space = 8) {
   const style = BorderStyle.SINGLE;
@@ -366,6 +378,10 @@ function triggerFileDownload(blob, fileName) {
   URL.revokeObjectURL(downloadUrl);
 }
 
+/* ============================================================
+   4. INITIALISATION DE L'ÉCOUTEUR DE GÉNÉRATION
+   ============================================================ */
+
 export function initDocxBuilder() {
   const btnGenerate = document.getElementById("btn-generate");
   if (!btnGenerate) return;
@@ -400,6 +416,7 @@ export function initDocxBuilder() {
 
     const documentChildren = [];
 
+    // Insertion de l'en-tête et de la légende en début de document
     documentChildren.push(...buildLegendParagraphs(coverConfig, legendConfig, highlightConfig, fontFamily));
 
     const rawLines = rawText.split("\n");
@@ -414,6 +431,7 @@ export function initDocxBuilder() {
       const cls = classifyLine(line);
       if (cls.type === "skip") continue;
 
+      // Gestion des grands titres (Introduction)
       if (cls.type === "grandTitre-intro") {
         let j = i;
         while (j < rawLines.length && rawLines[j].trim() === "") j++;
@@ -436,6 +454,7 @@ export function initDocxBuilder() {
         continue;
       }
 
+      // Gestion des Parties et Thèmes / Titres encadrés
       if (cls.type === "grandTitre-partie") {
         if (lastWasBox) {
           documentChildren.push(new Paragraph({ spacing: { before: 80, after: 80 }, children: [] }));
@@ -446,6 +465,7 @@ export function initDocxBuilder() {
         continue;
       }
 
+      // Traitement normal des autres lignes avec détection auto des articles / arrêts
       documentChildren.push(buildParagraph(cls.type, cls.content, styles, highlightConfig, fontFamily));
       lastWasBox = false; 
     }
