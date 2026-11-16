@@ -431,7 +431,7 @@ export function initDocxBuilder() {
           documentChildren.push(new Paragraph({ spacing: { before: 80, after: 80 }, children: [] }));
         }
         
-        documentChildren.push(buildGrandTitreParagraph(cls.content, secondLine, grandTiteurConfig || grandTitreConfig, fontFamily));
+        documentChildren.push(buildGrandTitreParagraph(cls.content, secondLine, grandTitreConfig, fontFamily));
         lastWasBox = true;
         continue;
       }
