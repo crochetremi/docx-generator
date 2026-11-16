@@ -18,9 +18,9 @@ export function isMostlyUppercase(str) {
 
 export function classifyLine(line) {
   if (RE_PAGE_FOOTER.test(line)) return { type: "skip", content: "" };
-  if (RE_INTRODUCTION.test(line)) return { type: "grandTitre-intro", content: line.toUpperCase() };
+  if (RE_INTRODUCTION.test(line)) return { type: "chapitre", content: line.toUpperCase() };
   if (RE_PARTIE.test(line)) return { type: "grandTitre-partie", content: line };
-  if (RE_THEME.test(line)) return { type: "grandTitre-partie", content: line };
+  if (RE_THEME.test(line)) return { type: "chapitre", content: line };
   if (RE_CHAPITRE.test(line)) return { type: "chapitre", content: line };
 
   let m;
