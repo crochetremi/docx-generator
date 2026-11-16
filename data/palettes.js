@@ -1,0 +1,72 @@
+export const PALETTES = {
+  bleu: {
+    "theme-color": "#1f4e79", "theme-bg-color": "#d9e6f2",
+    "chapitre-color": "#2e75b6", "chapitre-bg-color": "#eaf1fa",
+    "section-color": "#2e75b6", "section-bg-color": "#f2f6fb",
+    "sousSection-color": "#5b9bd5", "sousSection-bg-color": "#f5f8fc",
+    "sousSousSection-color": "#7fb2e5",
+    "detail-color": "#404040",
+    "citation-color": "#555555", "citation-bg-color": "#f3f3f3",
+    "text-color": "#262626", "bullet-color": "#262626",
+    "grandTitre-color": "#1f4e79", "grandTitre-border-color": "#2e75b6", "grandTitre-bg-color": "#eaf1fa",
+    "legende-bg-color": "#eaf1fa", "legende-border-color": "#2e75b6",
+    "articlesLois-color": "#b5651d", "jurisprudence-color": "#1f4e79",
+    "notions-color": "#2e75b6", "exceptions-color": "#b5651d"
+  },
+  vert: {
+    "theme-color": "#1f3d2b", "theme-bg-color": "#dfe6e0",
+    "chapitre-color": "#2f5233", "chapitre-bg-color": "#e6ece4",
+    "section-color": "#2f5233", "section-bg-color": "#eef2ec",
+    "sousSection-color": "#4f7a5c", "sousSection-bg-color": "#f2f6f1",
+    "sousSousSection-color": "#6f9a7c",
+    "detail-color": "#3f4a41",
+    "citation-color": "#55605a", "citation-bg-color": "#eef1ee",
+    "text-color": "#2b2b2b", "bullet-color": "#2b2b2b",
+    "grandTitre-color": "#2f5233", "grandTitre-border-color": "#3f5b48", "grandTitre-bg-color": "#eef2ec",
+    "legende-bg-color": "#e3e9e2", "legende-border-color": "#3f5b48",
+    "articlesLois-color": "#b5651d", "jurisprudence-color": "#2f6b3a",
+    "notions-color": "#2f6b3a", "exceptions-color": "#b5651d"
+  },
+  bordeaux: {
+    "theme-color": "#5e1a24", "theme-bg-color": "#f0dfe1",
+    "chapitre-color": "#7a2431", "chapitre-bg-color": "#f5e7e9",
+    "section-color": "#7a2431", "section-bg-color": "#f8eef0",
+    "sousSection-color": "#a4505c", "sousSection-bg-color": "#faf1f2",
+    "sousSousSection-color": "#c07d85",
+    "detail-color": "#4a4a4a",
+    "citation-color": "#5a5a5a", "citation-bg-color": "#f4f0f0",
+    "text-color": "#262626", "bullet-color": "#262626",
+    "grandTitre-color": "#5e1a24", "grandTitre-border-color": "#7a2431", "grandTitre-bg-color": "#f5e7e9",
+    "legende-bg-color": "#f0dfe1", "legende-border-color": "#7a2431",
+    "articlesLois-color": "#8a5a00", "jurisprudence-color": "#5e1a24",
+    "notions-color": "#7a2431", "exceptions-color": "#8a5a00"
+  },
+  violet: {
+    "theme-color": "#4b0082", "theme-bg-color": "#e6e6fa",
+    "chapitre-color": "#6a0dad", "chapitre-bg-color": "#f3e5f5",
+    "section-color": "#6a0dad", "section-bg-color": "#f8f0fc",
+    "sousSection-color": "#9370db", "sousSection-bg-color": "#fbf7fd",
+    "sousSousSection-color": "#ba55d3",
+    "detail-color": "#404040",
+    "citation-color": "#555555", "citation-bg-color": "#f3f3f3",
+    "text-color": "#262626", "bullet-color": "#262626",
+    "grandTitre-color": "#4b0082", "grandTitre-border-color": "#6a0dad", "grandTitre-bg-color": "#e6e6fa",
+    "legende-bg-color": "#f3e5f5", "legende-border-color": "#6a0dad",
+    "articlesLois-color": "#b5651d", "jurisprudence-color": "#4b0082",
+    "notions-color": "#6a0dad", "exceptions-color": "#b5651d"
+  },
+  automnale: {
+    "theme-color": "#5D4037", "theme-bg-color": "#EFEBE9", 
+    "chapitre-color": "#795548", "chapitre-bg-color": "#F5F5F6",  
+    "section-color": "#8D6E63", "section-bg-color": "#FAF9F9", 
+    "sousSection-color": "#A1887F", "sousSection-bg-color": "#FCFCFC",
+    "sousSousSection-color": "#BCAAA4", 
+    "detail-color": "#4E342E", 
+    "citation-color": "#5C5C5C", "citation-bg-color": "#F3F0EF", 
+    "text-color": "#2C2C2C", "bullet-color": "#2C2C2C", 
+    "grandTitre-color": "#5D4037", "grandTitre-border-color": "#8D6E63", "grandTitre-bg-color": "#EFEBE9", 
+    "legende-bg-color": "#F5F5F6", "legende-border-color": "#795548",
+    "articlesLois-color": "#D84315", "jurisprudence-color": "#5D4037", 
+    "notions-color": "#795548", "exceptions-color": "#BF360C" 
+  }
+};

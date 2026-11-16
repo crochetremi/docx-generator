@@ -1,0 +1,31 @@
+.panel {
+  background: var(--color-surface);
+  padding: 20px;
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-sm);
+}
+
+.panel-styles {
+  max-height: calc(100vh - 48px);
+  overflow-y: auto;
+  position: sticky;
+  top: 24px;
+}
+
+@media (max-width: 960px) {
+  .panel-styles {
+    position: static;
+    max-height: none;
+  }
+}
+
+.section-title {
+  font-weight: bold;
+  margin: 18px 0 12px 0;
+  border-bottom: 2px solid #edf2f7;
+  padding-bottom: 6px;
+}
+
+.panel-styles > .section-title:first-of-type {
+  margin-top: 4px;
+}
