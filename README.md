@@ -14,20 +14,21 @@ Ce projet est donc né de ce besoin concret, à deux : elle apporte le regard de
 
 Il suffit de coller votre texte dans l'interface, et l'application s'occupe automatiquement :
 
-- De la hiérarchie des titres (Thèmes, Chapitres, Sections, Sous-sections, etc.)
-- De la mise en valeur intelligente des références légales (articles de loi, jurisprudence, arrêts)
-- De l'application d'un design soigné (palettes de couleurs au choix, polices, en-têtes, encadrés de légende)
-- Du téléchargement direct d'un fichier `.docx` prêt à être imprimé ou partagé
+* De la hiérarchie des titres (Thèmes, Chapitres, Sections, Sous-sections, etc.)
+* De la mise en valeur intelligente des références légales (articles de loi, jurisprudence, arrêts)
+* De l'application d'un design soigné (palettes de couleurs au choix, polices, en-têtes, encadrés de légende)
+* Du téléchargement direct d'un fichier `.docx` prêt à être imprimé ou partagé
 
 ## 🛠️ Comment l'utiliser ?
 
-1. Ouvrez le fichier `index.html` dans un navigateur web.
+1. Ouvrez l'application web.
 2. Personnalisez vos styles ou choisissez une palette de couleurs dans le panneau de gauche.
 3. Collez votre cours brut dans la zone de texte à droite.
 4. Cliquez sur **Générer et télécharger le cours (.docx)** !
 
 ## 📂 Structure du projet
 
-- `index.html` : l'interface utilisateur de l'application
-- `style.css` : la feuille de style de l'interface web
-- `script.js` : la logique de parsing du texte et de génération du document Word (via la librairie `docx`)
+* `index.html` : l'interface utilisateur de l'application
+* `css/` : les feuilles de style modulaires (`base.css`, tokens, composants)
+* `js/` : la logique de l'application structurée en modules (`main.js`, core, composants de parsing et de génération `docx`)
+* `data/` : les données de configuration et palettes de couleurs
